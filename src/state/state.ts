@@ -1,4 +1,5 @@
 import { atom, selector } from "recoil";
+import { Sort } from "../utils/Sort";
 
 // action
 const getActionList = async () => {
@@ -10,7 +11,7 @@ const getActionList = async () => {
     }
 
     const data = await response.json();
-    return data.results || [];
+    return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
     return [];
@@ -19,7 +20,7 @@ const getActionList = async () => {
 
 export const ActionSelector = selector({
   key: "action-selector",
-  get: async ({ get }) => {
+  get: async () => {
     return await getActionList();
   },
   set: ({ set }, newData) => {
@@ -42,7 +43,7 @@ const getComedyList = async () => {
     }
 
     const data = await response.json();
-    return data.results || [];
+    return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
     return [];
@@ -51,7 +52,7 @@ const getComedyList = async () => {
 
 export const ComedySelector = selector({
   key: "comedy-selector",
-  get: async ({ get }) => {
+  get: async () => {
     return await getComedyList();
   },
   set: ({ set }, newData) => {
@@ -74,7 +75,7 @@ const getHorrorList = async () => {
     }
 
     const data = await response.json();
-    return data.results || [];
+    return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
     return [];
@@ -83,7 +84,7 @@ const getHorrorList = async () => {
 
 export const HorrorSelector = selector({
   key: "horror-selector",
-  get: async ({ get }) => {
+  get: async () => {
     return await getHorrorList();
   },
   set: ({ set }, newData) => {
@@ -107,7 +108,7 @@ const getDocList = async () => {
     }
 
     const data = await response.json();
-    return data.results || [];
+    return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
     return [];
@@ -116,7 +117,7 @@ const getDocList = async () => {
 
 export const DocSelector = selector({
   key: "doc-selector",
-  get: async ({ get }) => {
+  get: async () => {
     return await getDocList();
   },
   set: ({ set }, newData) => {
@@ -139,7 +140,7 @@ const getRomList = async () => {
     }
 
     const data = await response.json();
-    return data.results || [];
+    return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
     return [];
@@ -148,7 +149,7 @@ const getRomList = async () => {
 
 export const RomSelector = selector({
   key: "rom-selector",
-  get: async ({ get }) => {
+  get: async () => {
     return await getRomList();
   },
   set: ({ set }, newData) => {
