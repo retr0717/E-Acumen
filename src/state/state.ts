@@ -1,6 +1,8 @@
 import { atom, selector } from "recoil";
 import { Sort } from "../utils/Sort";
 
+export let list = [];
+
 // action
 const getActionList = async () => {
   try {
@@ -11,6 +13,8 @@ const getActionList = async () => {
     }
 
     const data = await response.json();
+    list.push(data.results[0]);
+
     return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
@@ -43,6 +47,8 @@ const getComedyList = async () => {
     }
 
     const data = await response.json();
+    list.push(data.results[0]);
+
     return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
@@ -75,6 +81,8 @@ const getHorrorList = async () => {
     }
 
     const data = await response.json();
+    list.push(data.results[0]);
+
     return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
@@ -94,7 +102,7 @@ export const HorrorSelector = selector({
 
 export const HorrorState = atom({
   key: "horror",
-  default: ComedySelector
+  default: HorrorSelector
 });
 
 //documentary
@@ -108,6 +116,8 @@ const getDocList = async () => {
     }
 
     const data = await response.json();
+    list.push(data.results[0]);
+
     return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
@@ -127,7 +137,7 @@ export const DocSelector = selector({
 
 export const DocState = atom({
   key: "documentary",
-  default: ComedySelector
+  default: DocSelector
 });
 
 //romantic
@@ -140,6 +150,8 @@ const getRomList = async () => {
     }
 
     const data = await response.json();
+    list.push(data.results[0]);
+
     return Sort(data.results) || [];
   } catch (error) {
     console.log("error occurred : ", error);
