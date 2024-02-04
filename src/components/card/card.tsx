@@ -1,4 +1,5 @@
 import { Carousel, Typography } from "@material-tailwind/react";
+import { height } from "@mui/system";
 import { useState } from "react";
 
 const CarouselCard = (props: any) => {
@@ -34,30 +35,29 @@ const SwipeCard = (props: any) => {
                 alt="image 1"
                 className="object-cover"
             />
+
             {
                 show ?
                     <div className={(show ? "absolute inset-0 grid place-items-center bg-black/75" : "mt-0")}>
-                        <div className="w-3/4 text-center md:w-2/4">
+
+                        <div className="w-3/4 text-center md:w-2/4 ">
+                            <div>
                             <Typography
                                 variant="h1"
                                 color="white"
                                 className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+                                placeholder={""}
                             >
                                 <div className="grid place-items-center text-4xl md:text-3xl lg:text-3xl">
                                     {props.item.title}
                                 </div>
 
-                                <div className="overflow-hidden lg:text-xl mt-4">
-                                    {props.item.overview}
+                                <div className="lg:text-2xl mt-4" style={{"color" : "yellow"}}>
+                                    {props.item.vote_average} / 10
                                 </div>
 
                             </Typography>
-                            <Typography
-                                variant="lead"
-                                color="white"
-                                className="mb-12 opacity-80"
-                            >
-                            </Typography>
+                            </div>
                         </div>
                     </div>
                     :
