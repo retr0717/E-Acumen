@@ -20,7 +20,9 @@ const Home = () => {
     <Box sx={{ width: "100%" }}>
       <Container sx={{ marginTop: "2rem" }}>
         <Stack spacing={2}>
-          <Trending />
+          <div className="">
+            <Trending />
+          </div>
         </Stack>
       </Container>
     </Box>
