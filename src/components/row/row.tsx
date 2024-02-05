@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { debounce } from "lodash";
-import { Typography } from "@material-tailwind/react";
+import { Typography, list } from "@material-tailwind/react";
 
 const Row = (props: any) => {
 
@@ -35,6 +35,11 @@ const RowCard = (props: any) => {
       }, 200);
   };
 
+  if(props.item.backdrop_path === null)
+  {
+    console.log(props.item.title ,"  ",props.item.backdrop_path , "type : ", typeof(props.item.backdrop_path) );
+  }
+
   return (
       <div className="w-full relative">
           <div
@@ -44,13 +49,13 @@ const RowCard = (props: any) => {
               onMouseLeave={pointerLeave}
           >
               <img
-                  className="object-cover rounded"
+                  className="object-cover rounded-xl"
                   style={{ height: "10rem" }}
-                  src={import.meta.env.VITE_IMAGE_URL + '/' + props.item.backdrop_path}
+                  src={import.meta.env.VITE_IMAGE_URL + props.item.backdrop_path }
                   alt="Movie"
               />
               {show && (
-                  <div className="text-center absolute inset-0 grid place-items-center bg-black/75">
+                  <div className="text-center absolute inset-0 grid place-items-center bg-black/75 rounded-xl" style={{"width":"17.8rem"}}>
                       <div className="text-center">
                           <div>
                               <Typography variant="h1" color="white" className="mb-4 text-3xl md:text-4xl lg:text-5xl" placeholder={""}>

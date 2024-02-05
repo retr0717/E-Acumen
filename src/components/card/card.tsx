@@ -29,11 +29,11 @@ const SwipeCard = (props: any) => {
     }
 
     return (
-        <div className="relative " onMouseEnter={(e) => showText(e)} onMouseLeave={e => pointerLeave(e)}>
+        <div className="relative" onMouseEnter={(e) => showText(e)} onMouseLeave={e => pointerLeave(e)}>
             <img
                 src={import.meta.env.VITE_IMAGE_URL + "/" + props.item.backdrop_path}
                 alt="image 1"
-                className="object-cover"
+                className="object-cover bg-cover bg-no-repeat"
             />
 
             {

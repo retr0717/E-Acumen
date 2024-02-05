@@ -28,8 +28,12 @@ const Home = () => {
         </Stack>
       </Container>
   
-      <div className="p-6" style={{"width" : "100%"}}>
+      <div className="p-6 font-mono" style={{"width" : "100%"}}>
             <Row list={action} title={"Action"}/>
+            <Row list={rom} title={"Romance"}/>
+            <Row list={comedy} title={"Comedy"}/>
+            <Row list={doc} title={"Documentary"}/>
+            <Row list={horror} title={"Horror"}/>
       </div>
     </Box>
   );
