@@ -1,16 +1,17 @@
 import { useRecoilState } from "recoil";
+import { lazy } from "react";
 import { ActionState, ComedyState, DocState, HorrorState, RomState } from "../../state/state";
-import Trending from "../trending/trending";
+
+//components
+const Trending = lazy(() => import('../trending/trending'));
+const Row = lazy(() => import('../row/row'));
 
 //Material Ui
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
-import Row from "../row/row";
-import { WidthFull } from "@mui/icons-material";
 
 const Home = () => {
-
 
   const [action] = useRecoilState(ActionState);
   const [comedy] = useRecoilState(ComedyState);
