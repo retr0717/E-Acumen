@@ -6,6 +6,8 @@ import Trending from "../trending/trending";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
+import Row from "../row/row";
+import { WidthFull } from "@mui/icons-material";
 
 const Home = () => {
 
@@ -19,12 +21,16 @@ const Home = () => {
   return (
     <Box sx={{ width: "100%" }}>
       <Container sx={{ marginTop: "2rem" }}>
-        <Stack spacing={2}>
+        <Stack spacing={2} sx={{width:"100%"}}>
           <div className="">
             <Trending />
           </div>
         </Stack>
       </Container>
+  
+      <div className="p-6" style={{"width" : "100%"}}>
+            <Row list={action} title={"Action"}/>
+      </div>
     </Box>
   );
 };

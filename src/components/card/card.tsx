@@ -7,7 +7,7 @@ const CarouselCard = (props: any) => {
 
     return (
         <div className="w-full flex justify-center">
-            <Carousel className="rounded-xl" style={{ "width": "70%" }} autoplay={( !show ? true : false)}>    
+            <Carousel className="rounded-xl" style={{ "width": "70%" }} autoplay={( !show ? true : false)} placeholder={""}>    
                 {
                     props.list.map((item: any) => <SwipeCard key={item.id} item={item} show={show} setShow={setShow} />)
                 }
@@ -53,7 +53,7 @@ const SwipeCard = (props: any) => {
                                 </div>
 
                                 <div className="lg:text-2xl mt-4" style={{"color" : "yellow"}}>
-                                    {props.item.vote_average} / 10
+                                    {Math.round(props.item.vote_average)} / 10
                                 </div>
 
                             </Typography>
