@@ -1,0 +1,8 @@
+.scrolleff{
+    scrollbar-color: transparent transparent;
+    user-select: none;
+}
+
+.scrolleff::-webkit-scrollbar{
+    height: 1px;
+}

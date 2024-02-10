@@ -7,6 +7,10 @@ const Home = lazy(() => import("./components/home/home.tsx"));
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 
+//slick
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 //custom style.
 import "./App.css";
 
