@@ -1,28 +1,24 @@
-import { useState } from "react";
-import { debounce } from "lodash";
-import { Typography, list } from "@material-tailwind/react";
-import Modal from "../modal/modal";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
-const Row = (props: any) => {
-  const [show, setShow] = useState(false);
-
-  console.log("row props : ", props);
-
-  return (
-    <div className="overflow-x-auto whitespace-nowrap w-full">
-      <h2 className="p-5 text-3xl">{props.title}</h2>
-      <div className="flex space-x-4 p-4" style={{ width: "100%" }}>
-        {props.list.map((item: any) => (
-          <RowCard key={item.id} item={item} show={show} setShow={setShow} />
-        ))}
-      </div>
-    </div>
-  );
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
 };
 
 const RowCard = (props: any) => {
-  const [show, setShow] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [show, setShow] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
 
   let timeout: any;
 
@@ -36,6 +32,14 @@ const RowCard = (props: any) => {
     timeout = setTimeout(() => {
       setShow(false);
     }, 200);
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
 
   if (props.item.backdrop_path === null) {
@@ -55,7 +59,7 @@ const RowCard = (props: any) => {
         style={{ width: "20rem" }}
         onMouseEnter={showText}
         onMouseLeave={pointerLeave}
-        onClick={() => setModal(true)}
+        onClick={handleOpenModal}
       >
         <img
           className="object-cover rounded-xl"
@@ -63,7 +67,7 @@ const RowCard = (props: any) => {
           src={import.meta.env.VITE_IMAGE_URL + props.item.backdrop_path}
           alt="Movie"
         />
-        <Modal modal={modal} />
+
         {show && (
           <div
             className="text-center absolute inset-0 grid place-items-center bg-black/75 rounded-xl"
@@ -88,10 +92,27 @@ const RowCard = (props: any) => {
             </div>
           </div>
         )}
+
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {props.item.title}
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              {/* Place any additional information you want to show in the modal */}
+              Movie details here...
+            </Typography>
+            <Button onClick={handleCloseModal}>Close</Button>
+          </Box>
+        </Modal>
       </div>
     </div>
   );
 };
 
-export default Row;
-
+export default RowCard;
