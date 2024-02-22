@@ -58,7 +58,7 @@ const RowCard = (props: any) => {
             className="text-center absolute inset-0 grid place-items-center bg-black/75 rounded-xl"
             style={{ width: "17.8rem" }}
           >
-            <div className="text-center">
+            <div className="text-center trim">
               <div>
                 <Typography
                   variant="h1"
@@ -83,14 +83,16 @@ const RowCard = (props: any) => {
           onClose={handleCloseModal} // Close modal when backdrop is clicked
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
+          style={{"width" : "100%"}}
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               {props.item.title}
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              {/* Place any additional information you want to show in the modal */}
-              Movie details here...
+                {
+                    props.item.overview
+                }
             </Typography>
             <Button onClick={(event) => handleCloseModal(event)}>Close</Button> {/* Close button */}
           </Box>
