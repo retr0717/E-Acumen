@@ -4,6 +4,8 @@ import RowCard from "../row-card/row-card";
 const Row = (props: any) => {
   const [show, setShow] = useState(false);
 
+  console.log("data model : ",props.list[0]);
+
   return (
     <div className="overflow-x-auto whitespace-nowrap w-full">
       <h2 className="p-5 text-3xl">{props.title}</h2>

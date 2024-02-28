@@ -16,6 +16,10 @@ const style = {
   p: 4,
 };
 
+const btnstyle = {
+  
+}
+
 const RowCard = (props: any) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [show, setShow] = React.useState(false);
@@ -94,7 +98,10 @@ const RowCard = (props: any) => {
                     props.item.overview
                 }
             </Typography>
-            <Button onClick={(event) => handleCloseModal(event)}>Close</Button> {/* Close button */}
+            <Button 
+              onClick={(event) => handleCloseModal(event)}
+              sx={btnstyle}
+            >Close</Button> {/* Close button */}
           </Box>
         </Modal>
       </div>
